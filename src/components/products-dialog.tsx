@@ -2,8 +2,11 @@ import { DialogClose, DialogDescription, DialogTitle } from "@/components/ui/dia
 import { DialogFooter, DialogHeader } from "./ui/dialog";
 import { Button } from "./ui/button";
 import type { Product } from "@/interfaces/product";
+import { Calendar } from "./ui/calendar";
+import { useState } from "react";
 
 export const ProductsDialog = ({ product }: { product: Product }) => {
+  const [date, setDate] = useState<Date | undefined>(new Date())
   console.log(product);
   return (
     <>
