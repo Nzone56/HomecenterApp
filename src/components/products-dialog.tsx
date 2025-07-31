@@ -8,10 +8,18 @@ export const ProductsDialog = ({ product }: { product: Product }) => {
   return (
     <>
       <DialogHeader>
-        <DialogTitle>Edit profile</DialogTitle>
-        <DialogDescription>Make changes to your profile here. Click save when you&apos;re done.</DialogDescription>
+        <DialogTitle>Añadir Producto</DialogTitle>
+        <DialogDescription>{product.displayName}</DialogDescription>
       </DialogHeader>
-      <div className="grid gap-4">HOLA</div>
+      <div className="grid gap-4">
+      <Calendar
+      mode="single"
+      selected={date}
+      onSelect={setDate}
+      className="rounded-md border shadow-sm"
+      captionLayout="dropdown"
+    />
+      </div>
       <DialogFooter>
         <DialogClose asChild>
           <Button variant="outline">Cancel</Button>
