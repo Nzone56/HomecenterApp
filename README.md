@@ -29,7 +29,7 @@ Y permite:
 - 💨 Tailwind CSS 4.1
 - 🧩 shadcn/ui (UI components)
 - ⚡ Vite
-- 🧪 Jest y Testing Library (para pruebas unitarias)
+- 🧪 Vitest y Testing Library (para pruebas unitarias)
 
 ## 📦 Requisitos
 
@@ -47,6 +47,7 @@ cd HomecenterApp
 nvm use 22 (Si es necesario)
 npm install
 npm run dev
+mpm run test (Para correr los test)
 ```
 ---
 ## 🧾 Estructura del JSON generado
@@ -56,7 +57,7 @@ npm run dev
   "fechaFinal": "2025-07-30T05:00:00.000Z",
   "diasAlquiler": 1,
   "producto": "ID del producto",
-   "descripcionProducto": {
+  "descripcionProducto": {
     "nombre": "Nombre del producto",
     "cantidad": "Candidad a alquilar",
     "precioProducto": "Precio del producto (comprar)"
