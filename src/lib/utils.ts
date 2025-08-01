@@ -1,3 +1,4 @@
+import type { Product, RawProduct } from "@/interfaces/product";
 import { clsx, type ClassValue } from "clsx"
 import type { DateRange } from "react-day-picker";
 import { twMerge } from "tailwind-merge"
@@ -24,3 +25,10 @@ export const getDaysInRange = (range?: DateRange): number => {
 };
 
 export const currencyFormatter = new Intl.NumberFormat("es-CO")
+
+export const transformProduct = (raw: RawProduct): Product => ({
+  productId: raw.productId,
+  displayName: raw.displayName,
+  prices: raw.prices.find((price) => price.type === "NORMAL") || raw.prices[0],
+  mediaUrls: raw.mediaUrls,
+});

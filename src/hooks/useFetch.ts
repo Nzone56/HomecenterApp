@@ -27,8 +27,7 @@ export const useFetch = <T1, T2>({ url, transform }: UseFetchProps<T1,T2>) => {
     };
 
     fetchData();
-    //eslint-disable-next-line
-  }, []);
+  }, [url, transform]);
 
   return { data, loading, error };
 };

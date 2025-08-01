@@ -28,7 +28,7 @@ export interface Product {
 }
 
 
-interface Price {
+export interface Price {
   label: string
   type: string
   symbol: string
