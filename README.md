@@ -1,69 +1,67 @@
-# React + TypeScript + Vite
+# 🛠️ Prueba Técnica - SPA de Alquiler de Productos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta aplicación es una **SPA (Single Page Application)** desarrollada con **React 19**, **TypeScript**, **Tailwind CSS 4.1** y la librería de componentes **shadcn/ui**. Fue construida utilizando **Vite**
 
-Currently, two official plugins are available:
+## 🎯 Descripción del Proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+La aplicación consume el servicio
 
-## Expanding the ESLint configuration
+GET https://www.homecenter.com.co/s/search/v1/soco/category/products?categoryId=cat1210001&currentpage=1&zoneId=1&priceGroup=10&sortBy=_score,desc
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Y permite:
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. Mostrar los productos (imagen, nombre, precio).
+2. Agregar un producto mostrando un **popup de confirmación**.
+3. Seleccionar **fechas de alquiler** mediante un calendario.
+4. Digitar la cantidad a alquilar.
+5. Mostrar el **costo total** del alquiler.
+6. Confirmar el proceso mediante un botón que:
+   - Muestra un **popup de éxito**.
+   - Actualiza un archivo `.json` con los datos del alquiler.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 📦 Tecnologías Usadas
+
+- ⚛️ React 19
+- 🧠 TypeScript
+- 💨 Tailwind CSS 4.1
+- 🧩 shadcn/ui (UI components)
+- ⚡ Vite
+- 🧪 Jest y Testing Library (para pruebas unitarias)
+
+## 📦 Requisitos
+
+- Node.js v22+
+- npm
+
+---
+
+## 🚀 Instalación
+
+```bash
+
+git clone https://github.com/Nzone56/HomecenterApp.git
+cd HomecenterApp
+nvm use 22 (Si es necesario)
+npm install
+npm run dev
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
+---
+## 🧾 Estructura del JSON generado
+```bash
+{
+  "fechaInicio": "2025-07-30T05:00:00.000Z",
+  "fechaFinal": "2025-07-30T05:00:00.000Z",
+  "diasAlquiler": 1,
+  "producto": "ID del producto",
+   "descripcionProducto": {
+    "nombre": "Nombre del producto",
+    "cantidad": "Candidad a alquilar",
+    "precioProducto": "Precio del producto (comprar)"
   },
-])
+  "precioDia": "Precio alquilado por dia (5%)",
+  "precioTotal": "Precio final"
+}
 ```
