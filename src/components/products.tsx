@@ -7,11 +7,13 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ProductsDialog } from "./products-dialog";
 import { Button } from "./ui/button";
 import { Plus } from "lucide-react";
+import { currencyFormatter, DAY_PERCENTAGE } from "@/lib/utils";
+import { toast } from "sonner";
 
 const transformProduct = (raw: RawProduct): Product => ({
   productId: raw.productId,
   displayName: raw.displayName,
-  prices: raw.prices[0],
+  prices: raw.prices.find((price) => price.type === "NORMAL") || raw.prices[0],
   mediaUrls: raw.mediaUrls,
 });
 
@@ -29,12 +31,11 @@ export const Products = () => {
   if (loading) return <h2 className="text-xl text-center">Cargando productos...</h2>;
   if (error) return <h2 className="text-2xl text-center text-red-500">Ocurrió un error al obtener los productos</h2>;
 
-  console.log(products, loading);
   return (
-    <div className="flex flex-wrap justify-center gap-4 my-6 mx-auto max-w-6xl">
+    <div className="flex flex-wrap justify-center gap-4 my-6 mx-auto px-2 md:px-6 max-w-6xl">
       {products.map((product) => (
-        <Dialog>
-          <Card key={product.productId} className="justify-between animate-appear">
+        <Dialog key={product.productId}>
+          <Card className="justify-between animate-appear">
             <CardHeader>
               <Carousel opts={{ loop: true }}>
                 <CarouselContent>
@@ -50,13 +51,25 @@ export const Products = () => {
               <CardTitle>{product.displayName}</CardTitle>
             </CardHeader>
             <CardContent className="flex justify-between items-center">
+              <div className="flex flex-col">
               <span>
+                <strong>Precio: </strong>
+               
                 {product.prices.symbol}
                 {product.prices.price}
               </span>
-
+              <span>
+                <strong>Precio x dia: </strong>
+               
+                {product.prices.symbol}
+                {currencyFormatter.format(product.prices.priceWithoutFormatting * DAY_PERCENTAGE)}
+              </span>
+              </div>
               <DialogTrigger asChild>
-                <Button className="font-extrabold"><Plus />Agregar</Button>
+                <Button className="font-extrabold" onClick={()=> toast("El producto se cargó de manera exitosa")}>
+                  <Plus />
+                  Agregar
+                </Button>
               </DialogTrigger>
             </CardContent>
           </Card>

@@ -1,3 +1,4 @@
+import { Toaster } from "sonner"
 import { Header } from "./components/header"
 import { Products } from "./components/products"
 import { ThemeProvider } from "./context/theme/theme-provider"
@@ -9,6 +10,7 @@ function App() {
       <main className="max-w-[100vw]">
         <Header />
         <Products />
+        <Toaster />
       </main>
     </ThemeProvider>
   )
