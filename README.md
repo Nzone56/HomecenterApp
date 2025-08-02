@@ -6,8 +6,7 @@ Esta aplicación es una **SPA (Single Page Application)** desarrollada con **Rea
 
 La aplicación consume el servicio
 
-GET https://www.homecenter.com.co/s/search/v1/soco/category/products?categoryId=cat1210001&currentpage=1&zoneId=1&priceGroup=10&sortBy=_score,desc
-
+`GET https://www.homecenter.com.co/s/search/v1/soco/category/products?categoryId=cat1210001&currentpage=1&zoneId=1&priceGroup=10&sortBy=_score,desc`
 
 Y permite:
 
@@ -49,8 +48,17 @@ npm install
 npm run dev
 mpm run test (Para correr los test)
 ```
+
 ---
+
+## 📌 Consideraciones del Usuario
+
+- Se utilizó **shadcn/ui** para la creación de componentes de interfaz de usuario pre-diseñados. Esto permitió un desarrollo más ágil, coherencia visual y una mejor experiencia de usuario.
+- **Ningún producto del servicio consumido incluía un precio de alquiler**. Para resolver esto, se definió una lógica propia donde el valor diario de alquiler se calcula automáticamente como el **5% del precio total del producto**.
+- Con el objetivo de demostrar mejor la funcionalidad del SPA y enriquecer la salida, se decidió agregar **campos adicionales** en el JSON final. Estos incluyen detalles como nombre del producto, cantidad alquilada, precio base y costo total, facilitando así una visualización más clara del flujo de alquiler.
+
 ## 🧾 Estructura del JSON generado
+
 ```bash
 {
   "fechaInicio": "2025-07-30T05:00:00.000Z",
@@ -63,6 +71,6 @@ mpm run test (Para correr los test)
     "precioProducto": "Precio del producto (comprar)"
   },
   "precioDia": "Precio alquilado por dia (5%)",
-  "precioTotal": "Precio final"
+  "costoTotal": "Precio final"
 }
 ```

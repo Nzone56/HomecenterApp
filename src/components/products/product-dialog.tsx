@@ -4,7 +4,7 @@ import { useProductDialog } from "@/hooks/useProductDialog";
 import { RentalDialogContent, RentalDialogFooter, RentalDialogHeader } from "./product-dialog-sections";
 import { useRentalForm } from "@/hooks/useRentalForm";
 
-export const ProductsDialog = ({ product }: { product: Product }) => {
+export const ProductDialog = ({ product }: { product: Product }) => {
   const { form, handleSetQuantity, handleSetRange } = useRentalForm();
   const { handleSubmitRental, isReady, totalPrice } = useProductDialog(product, form);
 

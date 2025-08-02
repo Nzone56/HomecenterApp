@@ -54,5 +54,5 @@ export interface RentalSummary {
     precioProducto: Product["prices"]["price"];
   };
   precioDia: string;
-  precioTotal: string;
+  costoTotal: string;
 }

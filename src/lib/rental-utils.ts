@@ -25,7 +25,7 @@ export const handleFinishRental = (event: React.FormEvent<HTMLFormElement>) => {
 };
 
 export const createRentalData = (product: Product, form: RentalForm, totalPrice: number): RentalSummary => {
-  const { dailyPrice } = getFormattedPrices(product);
+  const { dailyPrice, fullPrice } = getFormattedPrices(product);
   return {
     fechaInicio: form.dateRange?.from,
     fechaFinal: form.dateRange?.to,
@@ -34,10 +34,10 @@ export const createRentalData = (product: Product, form: RentalForm, totalPrice:
     descripcionProducto: {
       nombre: product.displayName,
       cantidad: form.quantity,
-      precioProducto: product.prices.price,
+      precioProducto: fullPrice,
     },
     precioDia: dailyPrice,
-    precioTotal: currencyFormatter.format(totalPrice),
+    costoTotal: currencyFormatter.format(totalPrice),
   };
 };
 

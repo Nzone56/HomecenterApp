@@ -16,7 +16,6 @@ export const useRentalForm = () => {
 
   // Handles the date range selection
   const handleSetRange = (range: DateRange | undefined) => {
-    console.log("Selected range:", range);
     setForm((prev) => ({ ...prev, dateRange: range }));
   };
 
