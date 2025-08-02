@@ -15,8 +15,9 @@ export const useProductDialog = (product: Product) => {
   };
 
   // Generate de JSON
-  const handleAddProduct = () => {
-    toast("El proceso de alquiler culminó de manera correcta");
+  const handleAddProduct = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    toast.success("El proceso de alquiler culminó de manera correcta");
     const rentedProduct = {
       fechaInicio: dateRange?.from,
       fechaFinal: dateRange?.to,

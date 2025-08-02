@@ -11,7 +11,7 @@ import { useProductDialog } from "@/hooks/useProductDialog";
 export const ProductsDialog = ({ product }: { product: Product }) => {
   const { quantity, dateRange, setDateRange, handleQuantityChange, handleAddProduct, isReady, totalPrice } = useProductDialog(product);
   return (
-    <>
+    <form className="flex flex-col gap-4" onSubmit={handleAddProduct}>
       <DialogHeader>
         <DialogTitle>Añadir Producto</DialogTitle>
         <DialogDescription>{product.displayName}</DialogDescription>
@@ -38,11 +38,11 @@ export const ProductsDialog = ({ product }: { product: Product }) => {
           <Button variant="outline">Cancelar</Button>
         </DialogClose>
         <DialogClose asChild>
-          <Button disabled={!isReady} onClick={handleAddProduct}>
+          <Button disabled={!isReady} type="submit">
             Continuar
           </Button>
         </DialogClose>
       </DialogFooter>
-    </>
+    </form>
   );
 };
