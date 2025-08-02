@@ -1,7 +1,7 @@
-import { Card } from "./ui/card";
-import { Skeleton } from "./ui/skeleton";
+import { Card } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
-export const ProductsSkeleton= () => {
+export const ProductsSkeleton = () => {
   return (
     <Card className="p-4">
       <Skeleton className="w-full h-[200px] rounded-lg" />

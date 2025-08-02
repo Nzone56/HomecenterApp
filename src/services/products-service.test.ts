@@ -10,7 +10,7 @@ describe("ProductsService.getProducts", () => {
       })
     ) as Mock;
 
-    const result = await ProductsServiceModule.ProductsService.getProducts("/api/products");
+    const result = await ProductsServiceModule.ProductsService.getProducts();
     expect(result).toEqual(data);
   });
 
@@ -21,7 +21,7 @@ describe("ProductsService.getProducts", () => {
       })
     ) as Mock;
 
-    const result = await ProductsServiceModule.ProductsService.getProducts("/api/products");
+    const result = await ProductsServiceModule.ProductsService.getProducts();
     expect(result).toEqual([]);
   });
 });
