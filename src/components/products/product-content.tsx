@@ -3,7 +3,12 @@ import type { Product } from "@/interfaces/product";
 import { useFormattedPrices } from "@/hooks/useFormattedPrices";
 import { ProductActions } from "./product-actions";
 
-export const ProductInfo = ({ product }: { product: Product }) => {
+type ProductCardProps = {
+  product: Product;
+  handleOpenDialog: () => void;
+};
+
+export const ProductContent = ({ product, handleOpenDialog }: ProductCardProps) => {
   const { fullPrice, dailyPrice } = useFormattedPrices(product);
 
   return (
@@ -18,7 +23,7 @@ export const ProductInfo = ({ product }: { product: Product }) => {
           {dailyPrice}
         </span>
       </div>
-      <ProductActions />.
+      <ProductActions handleOpenDialog={handleOpenDialog} />
     </CardContent>
   );
 };

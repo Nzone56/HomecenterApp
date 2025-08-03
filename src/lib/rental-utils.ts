@@ -1,6 +1,5 @@
 import type { Product, RentalForm, RentalSummary } from "@/interfaces/product";
 import type { DateRange } from "react-day-picker";
-import { toast } from "sonner";
 import { getFormattedPrices } from "./formatted-prices";
 import { currencyFormatter } from "./utils";
 
@@ -17,11 +16,6 @@ export const getDaysInRange = (range?: DateRange): number => {
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Including first day
 
   return diffDays + 1; // Including last day
-};
-
-export const handleFinishRental = (event: React.FormEvent<HTMLFormElement>) => {
-  event.preventDefault();
-  toast.success("El proceso de alquiler culminó de manera correcta");
 };
 
 export const createRentalData = (product: Product, form: RentalForm, totalPrice: number): RentalSummary => {

@@ -10,6 +10,7 @@ export const useProductDialog = (product: Product, form: RentalForm) => {
   // Generate the JSON
   const handleSubmitRental = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     if (!isReady) return toast.error("Por favor completa todos los campos");
 
     const rentalData = createRentalData(product, form, totalPrice);

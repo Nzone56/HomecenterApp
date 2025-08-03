@@ -7,10 +7,10 @@ import { Input } from "@/components/ui/input";
 import { currencyFormatter } from "@/lib/utils";
 import type { DateRange } from "react-day-picker";
 
-export const RentalDialogHeader = ({ product }: { product: Product }) => (
+export const RentalDialogHeader = ({ productName }: { productName: string }) => (
   <DialogHeader>
     <DialogTitle>Añadir Producto</DialogTitle>
-    <DialogDescription>{product.displayName}</DialogDescription>
+    <DialogDescription>{productName}</DialogDescription>
   </DialogHeader>
 );
 
@@ -20,7 +20,7 @@ export const RentalDialogFooter = ({ isValid }: { isValid: boolean }) => (
       <Button variant="outline">Cancelar</Button>
     </DialogClose>
     <DialogClose asChild>
-      <Button disabled={!isValid} type="submit">
+      <Button disabled={!isValid} type="submit" form="rental-form">
         Continuar
       </Button>
     </DialogClose>
@@ -33,10 +33,11 @@ type RentalDialogContentProps = {
   totalPrice: number;
   handleSetRange: (range: DateRange | undefined) => void;
   handleSetQuantity: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmitRental: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
-export const RentalDialogContent = ({ form, handleSetQuantity, handleSetRange, product, totalPrice }: RentalDialogContentProps) => (
-  <div className="flex flex-col items-center gap-4">
+export const RentalDialogContent = ({ form, handleSetQuantity, handleSetRange, handleSubmitRental, product, totalPrice }: RentalDialogContentProps) => (
+  <form id="rental-form" className="flex flex-col gap-4 items-center" onSubmit={handleSubmitRental}>
     <Calendar mode="range" defaultMonth={form.dateRange?.from} selected={form.dateRange} onSelect={handleSetRange} className="rounded-lg border shadow-sm" />
 
     <div className="grid w-full max-w-sm items-center gap-2">
@@ -50,5 +51,5 @@ export const RentalDialogContent = ({ form, handleSetQuantity, handleSetRange, p
         </span>
       )}
     </div>
-  </div>
+  </form>
 );

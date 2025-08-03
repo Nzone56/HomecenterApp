@@ -1,13 +1,18 @@
 import { Card } from "@/components/ui/card";
 import type { Product } from "@/interfaces/product";
 import { ProductCarousel } from "./product-carousel";
-import { ProductInfo } from "./product-info";
+import { ProductContent } from "./product-content";
 
-export const ProductCard = ({ product }: { product: Product }) => {
+type ProductCardProps = {
+  product: Product;
+  handleOpenDialog: () => void;
+};
+
+export const ProductCard = ({ product, handleOpenDialog }: ProductCardProps) => {
   return (
     <Card className="justify-between animate-appear">
       <ProductCarousel product={product} />
-      <ProductInfo product={product} />
+      <ProductContent product={product} handleOpenDialog={handleOpenDialog} />
     </Card>
   );
 };
